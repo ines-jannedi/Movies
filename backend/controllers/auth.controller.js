@@ -5,6 +5,12 @@ import { generateTokenAndSetCookie } from "../utils/generateToken.js";
 
 
 
+
+
+
+
+/////////////////////////signup////////////////////////////////////////////////////////////////////////////////////
+
 export async function Signup(req, res) {
 
     try {
@@ -75,9 +81,51 @@ export async function Signup(req, res) {
 
 
 
+
+/////////////////////////login////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 export async function Login(req, res) {
-    res.send("Login route")
+    try {
+        const {email,password} = req.body;
+
+        if(!email ||!password) {
+            return res.status(400).json({success:false, message:"All fields are required"})
+        }
+
+    const user = await User.findOne({email:email})
+  if(!user) {
+    return res.status(404).json({success:false, message:"Invalid credentials"})
+  }
+  
+  const isPasswordCorrect = await bcryptjs.compare(password,user.password) // compare password of db with password of user
+  if (!isPasswordCorrect) {
+    return res.status(404).json({success:false, message:"Invalid credentials"})
+  }
+
+  generateTokenAndSetCookie(user._id,res)
+
+  res.status(200).json
+  ({
+      success: true,
+      user: {
+          ...user._doc,
+          password: ""
+      },
+  });
+
+
+    } catch (err) {
+       console.log("Error in login controller", err.message);
+       res.status(500).json({ success: false, message: "Internal server error" });
+    }
 }
+
+
+
+
+
+
+/////////////////////////////logout/////////////////////////////////////////////////////////////////////////////////////////
 
 
 
