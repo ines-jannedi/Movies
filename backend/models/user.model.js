@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
         unique: true,
     },
     email:{
+        type: String,
         required:true,
         unique:true,
     },
@@ -26,4 +27,4 @@ const userSchema = mongoose.Schema({
 })
 
 
-export const User = mongoose.model('User',userSchema); // create User collection from userSchema
+export const User = mongoose.model('user',userSchema); // create User collection from userSchema
