@@ -11,6 +11,13 @@ import { generateTokenAndSetCookie } from "../utils/generateToken.js";
 
 /////////////////////////signup////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+
+
+
 export async function Signup(req, res) {
 
     try {
@@ -41,12 +48,9 @@ export async function Signup(req, res) {
             return res.status(400).json({ success: false, message: "Username already exists" });
         }
 
-
         // hash a password
         const salt = await bcryptjs.genSalt(10)
         const hashedPassword = await bcryptjs.hash(password, salt)
-
-
 
         // Randomly assign a profile picture
         const PROFILE_PICS = ["/avatar1.png", "/avatar2.png", "/avatar3.png"];
@@ -83,6 +87,13 @@ export async function Signup(req, res) {
 
 
 /////////////////////////login////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
 
 export async function Login(req, res) {
     try {
@@ -126,6 +137,13 @@ export async function Login(req, res) {
 
 
 /////////////////////////////logout/////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
 
 
 
