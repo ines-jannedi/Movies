@@ -35,6 +35,7 @@ export default [
       ],
       "react/no-unescaped-entities": "off",
       "no-unused-vars": "off",
+      "react/prop-types": "off"
     },
   },
 ]
