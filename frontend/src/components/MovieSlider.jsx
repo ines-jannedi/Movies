@@ -19,14 +19,24 @@ const sliderRef = useRef(null);
 
     const formattedContentType = contentType === "movie" ? "Movies" : "Tv Shows";
 
+    
+
 
     useEffect(() => {
         const getContent = async () => {
             const res = await axios.get(`/api/v1/${contentType}/${category}`)
             setContent(res.data.content)
+
+             // Filter content where 'poster_path' or 'backdrop_path' is null
+             const filteredContent = res.data.content.filter(
+                (item) => item.backdrop_path && item.poster_path
+            );
+            setContent(filteredContent);
         }
         getContent()
     }, [contentType, category]);
+
+     
 
 
 

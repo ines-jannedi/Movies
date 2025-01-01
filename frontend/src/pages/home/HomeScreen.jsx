@@ -11,6 +11,7 @@ const HomeScreen = () => {
 	const { trendingContent } = useGetTrendingContent();
 	const { contentType } = useContentStore();
 	const [imgLoading, setImgLoading] = useState(true);
+	const [content, setContent] = useState({});
 
 	if (!trendingContent)
 		return (
@@ -90,8 +91,12 @@ const HomeScreen = () => {
 
 			<div className='flex flex-col gap-10 bg-black py-10'>
 				{contentType === "movie"
-					? MOVIE_CATEGORIES.map((category) => <MovieSlider key={category} category={category} />)
-					: TV_CATEGORIES.map((category) => <MovieSlider key={category} category={category} />)}
+				
+					? MOVIE_CATEGORIES.map((category) => <MovieSlider key={category} category={category}   />)
+					: TV_CATEGORIES.map((category) => <MovieSlider key={category} category={category}   />)
+					
+					}
+					
 			</div>
 		</>
 	);
