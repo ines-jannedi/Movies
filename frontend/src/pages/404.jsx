@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 
 const NotFoundPage = () => {
@@ -13,7 +13,7 @@ const NotFoundPage = () => {
    </header>
 
    <main
-  className=" absolute before:absolute before:inset-1 z-1 before:bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.5)_0%,_rgba(0,0,0,0.2)_45%,_rgba(0,0,0,0.1)_55%,_transparent_70%)] text-center flex flex-col justify-center items-center 
+  className=" absolute before:placeholder: before:inset-1  before:bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.5)_0%,_rgba(0,0,0,0.2)_45%,_rgba(0,0,0,0.1)_55%,_transparent_70%)] text-center flex flex-col justify-center items-center 
   "
 >
   <h1 className="text-7xl font-semibold text-white mb-3">Lost your way?</h1>
@@ -22,9 +22,9 @@ const NotFoundPage = () => {
     Sorry, we can't find that page. You'll find lots to explore on the home page.
   </p>
 
-  <button className="bg-white text-black py-2 px-6 rounded font-semibold hover:bg-gray-200 transition mb-4">
+  <Link to={"/"} className="bg-white text-black py-2 px-6 rounded font-semibold hover:bg-gray-200 transition mb-4">
     Netflix Home
-  </button>
+  </Link >
 
   <span className="text-gray-300 text-xl">
     Error Code: <strong className="text-white text-xl">NSES-404</strong>
