@@ -11,6 +11,7 @@ import { Loader } from 'lucide-react'
 import WatchPage from './pages/WatchPage.jsx'
 import SearchUpPage from './pages/SearchUpPage.jsx'
 import SearchHistoryPage from './pages/SearchHistoryPage.jsx'
+import NotFoundPage from './pages/404.jsx'
 
 function App() {
  const {user, isCheckingAuh, authCheck} = useAuthStore()
@@ -40,6 +41,7 @@ if(isCheckingAuh) {
      <Route path="/watch/:id" element={user ? <WatchPage/> : <Navigate to={"/login"} />}/> {/* if user not authenticated */}
      <Route path="/search" element={user ? <SearchUpPage/> : <Navigate to={"/login"} />}/>
      <Route path="/history" element={user ? <SearchHistoryPage/> : <Navigate to={"/login"} />}/>
+     <Route path="/*" element={<NotFoundPage/>}/>
 
     </Routes>
     <Footer/>
