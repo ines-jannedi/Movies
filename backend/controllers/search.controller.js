@@ -13,7 +13,8 @@ export async function searchPerson(req,res) {
  if(response.results.length===0) {
     return res.status(404).send(null)
  }
-
+ 
+if(!req.user_id){
  await User.findByIdAndUpdate(req.user._id,{
     $push:{
         searchHistory:{
@@ -24,10 +25,10 @@ export async function searchPerson(req,res) {
             createdAt:new Date(),
         }
     }
- });
+ });}
   res.status(200).json({success:true,content:response.results})
 
-
+  
     } catch (err) {
     console.log("Error in searchPerson controller",err.message);
     res.status(500).json({success:false,message:"Internal Server Error"})
@@ -61,8 +62,11 @@ if(response.results.length===0) {
             searchType:"movie",
             createdAt:new Date(),
         }
+        
+    
     }
  });
+
  res.status(200).json({success:true,content:response.results})
 
     } catch(err) {
